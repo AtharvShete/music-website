@@ -92,25 +92,22 @@ export const WavyBackground = ({
     animationId = requestAnimationFrame(render);
   };
 
-const [animationId, setAnimationId] = useState<number>(0);
-
-useEffect(() => {
+  useEffect(() => {
     init();
     return () => {
-        cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationId);
     };
-}, [animationId]);
+  }, []);
 
-const [isSafari, setIsSafari] = useState(false);
-const [animationId, setAnimationId] = useState<number>(0); // Initialize animationId with a default value
-useEffect(() => {
+  const [isSafari, setIsSafari] = useState(false);
+  useEffect(() => {
     // I'm sorry but i have got to support it on safari.
     setIsSafari(
-        typeof window !== "undefined" &&
-            navigator.userAgent.includes("Safari") &&
-            !navigator.userAgent.includes("Chrome")
+      typeof window !== "undefined" &&
+        navigator.userAgent.includes("Safari") &&
+        !navigator.userAgent.includes("Chrome")
     );
-}, [animationId]);
+  }, []);
 
   return (
     <div
